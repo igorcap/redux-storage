@@ -1,6 +1,6 @@
 # build artefacts
-/build/
-/build-es/
+# /build/
+# /build-es/
 
 # npm
 /node_modules/
