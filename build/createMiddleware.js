@@ -35,7 +35,6 @@ function isValidAction(action) {
     var isFunc = (0, _lodash2['default'])(action);
     var isObj = (0, _lodash4['default'])(action);
     var hasType = isObj && action.hasOwnProperty('type');
-
     if (!isFunc && isObj && hasType) {
         return true;
     }
@@ -75,7 +74,6 @@ exports['default'] = function (engine) {
 
     // Also don't save if we process our own actions
     var blacklistedActions = [].concat(_toConsumableArray(actionBlacklist), [_constants.LOAD, _constants.SAVE]);
-
     if (process.env.NODE_ENV !== 'production' && Array.isArray(actionWhitelist)) {
         warnAboutConfusingFiltering(actionBlacklist, actionWhitelist);
     }
@@ -110,7 +108,7 @@ exports['default'] = function (engine) {
                     var dispatchSave = function dispatchSave() {
                         return dispatch(saveAction);
                     };
-                    engine.save(saveState).then(function () {
+                    engine.save({ saveState: saveState, action: action }).then(function () {
                         if (opts.disableDispatchSaveAction === false) {
                             return dispatchSave();
                         }

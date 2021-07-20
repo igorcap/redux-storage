@@ -5,7 +5,8 @@
   "main": "build/index.js",
   "jsnext:main": "build-es/index.js",
   "scripts": {
-    "test": "make lint test build"
+    "test": "make lint test build",
+    "prepare": "make build"
   },
   "repository": {
     "type": "git",
